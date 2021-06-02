@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Backendless
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Backendless.shared.initApp(applicationId: "C08AEFD1-0A68-2B5B-FF64-3E9E8B5D3900", apiKey: "37018558-C87F-4698-8335-75C87FBE433F")
+        
         return true
     }
 
