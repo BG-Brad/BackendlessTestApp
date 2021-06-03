@@ -10,12 +10,8 @@ import SwiftUI
 struct DetailLayoutView: View {
     
     @EnvironmentObject var nfcScanner : NFCController
-    @State var showHome = false
     
     var body: some View {
-        if showHome == true {
-            HomeView()
-        } else {
             ZStack {
                
                 Image("multi")
@@ -25,6 +21,7 @@ struct DetailLayoutView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
+                    VStack {
                     HStack {
                         Text("Asset")
                             .font(Font.custom("BigCityGrotesquePro-Regular", size: 35))
@@ -34,24 +31,29 @@ struct DetailLayoutView: View {
                             .bold()
                             .foregroundColor(.black)
                             .offset(x: -8)
+                        HStack {
+                            
+                        }
                     }
-                    Text("Powered By")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                        .italic()
+                    }
                     HStack {
+//                    Text("Powered By")
+//                        .font(.subheadline)
+//                        .foregroundColor(.white)
+//                        .italic()
+//
                         Image("Logo_trans")
                             .resizable()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 40, height: 40)
                             // .padding()
                             .aspectRatio(contentMode: .fit)
                           
                         HStack {
                             Text("Black")
-                                .font(Font.custom("BigCityGrotesquePro-Regular", size: 32))
+                                .font(Font.custom("BigCityGrotesquePro-Regular", size: 18))
                                 .foregroundColor(.black)
                             Text("Glove")
-                                .font(Font.custom("BigCityGrotesquePro-Bold", size: 32))
+                                .font(Font.custom("BigCityGrotesquePro-Bold", size: 18))
                                 .foregroundColor(.black)
                                 .offset(x: -8)
                         }
@@ -62,7 +64,7 @@ struct DetailLayoutView: View {
                 
                 .offset(y: 45)
             }
-        }
+        
     }
 }
 
