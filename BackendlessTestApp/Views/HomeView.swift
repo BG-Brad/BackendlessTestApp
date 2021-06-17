@@ -31,14 +31,16 @@ struct HomeView: View {
     @State var data = ""
     @EnvironmentObject var nfcScanner : NFCController
     @State var showSheet = false
+    @EnvironmentObject var observedObject : ObservedObjectes
+    @ObservedObject var userSettings = UserSettings()
     
     init() {
         UITableView.appearance().backgroundColor = .clear
     }
     
     var body: some View {
-      
-            
+        
+        
         NavigationView {
             ZStack {
                 Image("multi")
@@ -46,43 +48,68 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .edgesIgnoringSafeArea(.all)
-            if nfcScanner.objectID.count > 5 && nfcScanner.nfcScanned {
-                ComputersDetailView(objectID: nfcScanner.objectID).navigationBarHidden(true)
-            }
-            else {
-                VStack {
-                    Text("Computers")
-                        .font(.title3)
-                    List {
-                        ForEach(computersList, id: \.self) { computers in
-                            NavigationLink(destination: ComputersDetailView(objectID: computers.objectId!)) {
-                                Text(computers.serial_number ?? "-")
+                if nfcScanner.objectID.count > 5 && nfcScanner.nfcScanned {
+                    ComputersDetailView(objectID: nfcScanner.objectID).navigationBarHidden(true)
+                }
+                else {
+                    
+                    VStack {
+                        List {
+                            Section(header: Text("Computers").foregroundColor(.white).font(.title3) ) {
+                                ForEach(computersList, id: \.self) { computers in
+                                    NavigationLink(destination: ComputersDetailView(objectID: computers.objectId!)) {
+                                        Text(computers.serial_number ?? "-")
+                                    }.isDetailLink(false)
+                                }
                             }
                             
+                       
+                        
+                        
+                        //    .offset(y: -40)
+                        //   .frame(height: 400)
+                       
+                            Section(header: Text("Mobile Devices").foregroundColor(.white).font(.title3) ) {
+                                ForEach(computersList, id: \.self) { computers in
+                                    NavigationLink(destination: ComputersDetailView(objectID: computers.objectId!)) {
+                                        Text(computers.serial_number ?? "-")
+                                    }
+                                }
+                            }
+                        }.listStyle(InsetGroupedListStyle())
+                      
+                        //  .offset(y: -40)
+                        // .frame(height: 400)
+                        Button(action: {
+                            self.nfcScanner.startNFCReaderSession(invalidateAfterFirstRead: true)
+                            print("ID: \(nfcScanner.objectID)")
+                        }) {
+                            
+                            Image(systemName: "wave.3.forward.circle.fill")
+                                .imageScale(.large)
+                            Text("Tap To Scan NFC  Tag")
+                                .font(.title3)
                         }
                         
-                    }.offset(y: -40)
-                    .frame(height: 400)
-                    Button(action: {
-                        self.nfcScanner.startNFCReaderSession(invalidateAfterFirstRead: true)
-                        print("ID: \(nfcScanner.objectID)")
-                    }) {
                         
-                        Image(systemName: "wave.3.forward.circle.fill")
-                            .imageScale(.large)
-                        Text("Tap To Scan NFC  Tag")
-                            .font(.title3)
-                    }
-                    
-                    
-                }.offset(y: -100)
-                .navigationTitle(Text("Social Studies"))
+                    }//.offset(y: -100)
+                   
+                }
+                
+            }.navigationBarTitle(Text("Social Studies"), displayMode: .automatic)
+                .navigationBarItems(trailing: (
+                    Button(action: {
+                    self.userSettings.username = "Username"
+                    self.userSettings.password = "Password"
+                    self.observedObject.isAuthenticatedUser = false
+                   
+                }) {
+                    Text("Logout")
+                }))
+            .onAppear() {
+                itemLookup()
             }
-            
-        }.onAppear() {
-            itemLookup()
         }
-    }
     }
     func itemLookup() {
         guard let url = URL(string: "https://api.backendless.com/\(APP_ID)/\(REST_API_KEY)/data/Computers") else { return }

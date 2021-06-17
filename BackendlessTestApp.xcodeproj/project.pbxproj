@@ -21,6 +21,7 @@
 		A2E23B5A26668F1C006F0459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E23B5926668F1C006F0459 /* Preview Assets.xcassets */; };
 		A2E23B5D26668F1C006F0459 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E23B5B26668F1C006F0459 /* LaunchScreen.storyboard */; };
 		A2E23B65266697C0006F0459 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E23B64266697C0006F0459 /* Helper.swift */; };
+		A2FE07E7267BD41A006BC5B7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE07E6267BD41A006BC5B7 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A2E23B5C26668F1C006F0459 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2E23B5E26668F1C006F0459 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2E23B64266697C0006F0459 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A2FE07E6267BD41A006BC5B7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E628D9298BE8291956806AFB /* Pods_BackendlessTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackendlessTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C84019B28843D8E01461E9 /* Pods-BackendlessTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackendlessTestApp.debug.xcconfig"; path = "Target Support Files/Pods-BackendlessTestApp/Pods-BackendlessTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				A20ED7032667EC7D00DD7E67 /* HomeView.swift */,
 				A20ED7052667F25400DD7E67 /* ComputersDetailView.swift */,
 				A20ED713266824B300DD7E67 /* DetailLayoutView.swift */,
+				A2FE07E6267BD41A006BC5B7 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				A2E23B5126668F1B006F0459 /* AppDelegate.swift in Sources */,
 				A2E23B5326668F1B006F0459 /* SceneDelegate.swift in Sources */,
 				A20ED7042667EC7D00DD7E67 /* HomeView.swift in Sources */,
+				A2FE07E7267BD41A006BC5B7 /* LoginView.swift in Sources */,
 				A2E23B5526668F1B006F0459 /* ContentView.swift in Sources */,
 				A20ED7192668350400DD7E67 /* NFCController.swift in Sources */,
 				A20ED714266824B300DD7E67 /* DetailLayoutView.swift in Sources */,
@@ -423,7 +427,7 @@
 				DEVELOPMENT_TEAM = A97W42FALD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BackendlessTestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -447,7 +451,7 @@
 				DEVELOPMENT_TEAM = A97W42FALD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BackendlessTestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
